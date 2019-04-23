@@ -16,6 +16,9 @@
       <a href="#" class="btn btn-secondary">Adicionar Anúncio</a>
     </div>
   </div>
+  <pre>
+  <?php print_r($anuncios); ?>
+</pre>
   <div class="table-responsive mt-3">
         	<table class="table table-striped table-bordered table-borderless table-hover">
         	  <caption>Total de anúncios do usuário: <?= count($anuncios); ?></caption>

@@ -24,5 +24,5 @@ Route::get('/login', function () {
 });
 
 Route::get('/anuncios', 'AnuncioController@lista');
-Route::get('/anuncios/editar', 'AnuncioController@editar');
-Route::get('/anuncios/excluir', 'AnuncioController@excluir');
+Route::get('/anuncios/editar/{id}', 'AnuncioController@editar')->where('id', '[0-9]+');
+Route::get('/anuncios/excluir{id}', 'AnuncioController@excluir');

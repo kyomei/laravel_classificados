@@ -1,6 +1,7 @@
 <?php namespace classificados\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
+use Request;
 
 class AnuncioController extends Controller {
 
@@ -9,11 +10,18 @@ class AnuncioController extends Controller {
 		return view('meus-anuncios')->with('anuncios', $data);
 	}
 
-	public function editar() {
+	public function editar($id) {
+		//$id = 1;
+		//$id = Request::route('id');
+		$data = DB::select('select * from anuncios where id = ?', [$id]);
 
+		if(empty($data)) {
+			return "Esse anuncio não existe";
+		}
+		return view('anuncios-editar')->with('anuncio', $data[0]);
 	}
 
 	public function excluir() {
-		
+
 	}
 }
