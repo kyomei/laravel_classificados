@@ -24,3 +24,5 @@ Route::get('/login', function () {
 });
 
 Route::get('/anuncios', 'AnuncioController@lista');
+Route::get('/anuncios/editar', 'AnuncioController@editar');
+Route::get('/anuncios/excluir', 'AnuncioController@excluir');

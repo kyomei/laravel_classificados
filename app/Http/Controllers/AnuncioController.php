@@ -5,8 +5,15 @@ use Illuminate\Support\Facades\DB;
 class AnuncioController extends Controller {
 
 	public function lista() {
-		$anuncios = DB::select('select * from anuncios');
-		print_r($anuncios);
-		return '<h1>Listagem de anúncios com Laravel</h1>';
+		$data = DB::select('select * from anuncios');
+		return view('meus-anuncios')->with('anuncios', $data);
+	}
+
+	public function editar() {
+
+	}
+
+	public function excluir() {
+		
 	}
 }
