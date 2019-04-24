@@ -29,10 +29,10 @@ class AnuncioController extends Controller {
 
 		 FROM anuncios WHERE id = ?', [$id]);
 		$fotos = DB::select('SELECT id, url as filename FROM anuncios_imagens WHERE id_anuncio = ?', [$id]);
-		//$data['anuncio'] = $anuncio[0];
-		//return view('anuncio.editar')->with('anuncio', $anuncio[0]);
+		$categorias = DB::select('select * from categorias');
 
 		$data['anuncio'] = $anuncio[0];
+		$data['categorias'] = $categorias;
 		$data['fotos'] = $fotos;
 		return view('anuncio.editar', $data);
 	}

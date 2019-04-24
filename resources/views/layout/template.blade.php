@@ -37,9 +37,16 @@
       </ul>
     </div>
   </nav>
-<div class="container">
-  @yield('conteudo')      
-</div>
+	<div class="container">
+	  @yield('conteudo')      
+	</div>
+	<!-- FOOTER -->
+    <footer class="bg-light py-5">
+    	<div class="container">
+	    	<p class="float-right"><a href="#">Back to top</a></p>
+	        <p>&copy; 2019 <a href="mailto:rafa.jefer@gmail.com">Rafael Jeferson</a>, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+    	</div>
+    </footer>
 
   <!-- scripts -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

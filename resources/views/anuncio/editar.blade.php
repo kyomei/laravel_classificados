@@ -11,10 +11,9 @@
 					<div class="form-group">
 					    <label for="categoria">Categoria:</label>
 					    <select name="categoria" class="form-control">
-					    	<option value="1">Relógios</option>
-					    	<option value="2">Roupas</option>
-					    	<option value="3">Eletrônicos</option>
-					    	<option value="4">Carros</option>
+					    	@foreach ($categorias as $cat)
+			    				<option value="{{$cat->id}}" {{ ($cat->id == $anuncio->id_categoria) ? 'selected' : '' }}>{{ $cat->nome }}</option>
+			    			@endforeach
 					    </select>
 					</div>
 				</div>
