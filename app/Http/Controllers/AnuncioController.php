@@ -30,8 +30,12 @@ class AnuncioController extends Controller {
 
 		DB::insert('INSERT INTO anuncios (id_usuario, id_categoria, titulo, valor, estado, descricao) VALUES (1, ?,?,?,?,?)', array($categoria, $titulo, $valor, $estado, $descricao));
 
-		//return view('anuncio.adicionado')->with('titulo', $titulo);
-		return redirect('/anuncios')->withInput();
+		
+		// Redireciona para url anuncios e manter valor do $titulo na página /anuncios 
+		//return redirect('/anuncios')->withInput(Request::only('titulo'));
+
+		// Redirenciona para um action
+		return redirect()->action('AnuncioController@lista')->withInput(Request::only('titulo'));
 		
 	}
 

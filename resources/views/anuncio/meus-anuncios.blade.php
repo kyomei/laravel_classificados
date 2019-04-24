@@ -6,7 +6,7 @@
   <!-- Start .\ button add anúncio -->  
   <div class="clearfix mb-3">
     <div class="float-right">
-      <a href="anuncios/adicionar" class="btn btn-secondary">Adicionar Anúncio</a>
+      <a href="{{action('AnuncioController@adicionar')}}" class="btn btn-secondary">Adicionar Anúncio</a>
     </div>
   </div>
   <!-- End .\ button add anúncio -->
