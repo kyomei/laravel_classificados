@@ -6,7 +6,8 @@
 
 <div class="row justify-content-md-center">
 	<div class="col-md-8">
-		<form action="anuncios/insert" method="POST" enctype="multipart/form-data">
+		<form action="/anuncios/adiciona" method="POST" enctype="multipart/form-data">
+			<input type="hidden" name="_token" value="{{{ csrf_token() }}}">
 			<div class="row mb-3">
 				<div class="col-md-4">
 					<div class="form-group">

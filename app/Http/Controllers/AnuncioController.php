@@ -11,12 +11,28 @@ class AnuncioController extends Controller {
 		$data = DB::select('SELECT *, 
 		(SELECT anuncios_imagens.url FROM anuncios_imagens WHERE anuncios_imagens.id_anuncio = anuncios.id LIMIT 1) as url 
 		FROM anuncios 
-		WHERE id_usuario = 1 ORDER BY anuncios.titulo ASC');
+		WHERE id_usuario = 1 ORDER BY anuncios.created_at DESC');
 		return view('anuncio.meus-anuncios')->with('anuncios', $data);
 	}
 
 	public function adicionar() {
 		return view('anuncio.adicionar');
+	}
+
+	public function adiciona() {
+
+		$categoria = Request::input('categoria');
+		$titulo = Request::input('titulo');
+		$valor = Request::input('valor');
+		$estado = Request::input('estado');
+		$descricao = Request::input('descricao');
+		//$fotos = Request::input('fotos');
+
+		DB::insert('INSERT INTO anuncios (id_usuario, id_categoria, titulo, valor, estado, descricao) VALUES (1, ?,?,?,?,?)', array($categoria, $titulo, $valor, $estado, $descricao));
+
+		//return view('anuncio.adicionado')->with('titulo', $titulo);
+		return redirect('/anuncios')->withInput();
+		
 	}
 
 	public function editar($id) {
@@ -40,4 +56,5 @@ class AnuncioController extends Controller {
 	public function excluir() {
 
 	}
+
 }
