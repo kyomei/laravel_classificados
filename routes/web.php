@@ -24,6 +24,7 @@ Route::get('/login', function () {
 });
 
 Route::get('/anuncios', 'AnuncioController@lista');
+Route::get('/anuncio/{id}', 'AnuncioController@mostra')->where('id', '[0-9]+');
 Route::get('/anuncios/adicionar', 'AnuncioController@adicionar');
 Route::post('/anuncios/adiciona', 'AnuncioController@adiciona');
 Route::get('/anuncios/editar/{id}', 'AnuncioController@editar')->where('id', '[0-9]+');

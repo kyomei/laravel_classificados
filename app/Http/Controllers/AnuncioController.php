@@ -6,6 +6,8 @@ use Request;
 
 class AnuncioController extends Controller {
 
+
+	// Método - Listagem de todos os anúncios
 	public function lista() {
 		//$data = DB::select('select * from anuncios');
 
@@ -16,15 +18,29 @@ class AnuncioController extends Controller {
 		return view('anuncio.meus-anuncios')->with('anuncios', $data);
 	}
 
+	// Método - Listagem de todos os anúncios
 	public function lista2() {
 		$data = Anuncio::all();
 		return view('anuncio.meus-anuncios')->with('anuncios', $data);
 	}
 
+	// Método - Mostrar detalhes do anúncio via $id
+	public function mostra($id) {
+		$data['anuncio'] = Anuncio::find($id);
+		$data['imagens'] = array();
+		if(empty($data)) {
+			return "Esse produto não existe";
+		}
+
+		return view('anuncio.detalhes', $data);
+	}
+
+	// Método - Exibir view adicionar novo anúncio
 	public function adicionar() {
 		return view('anuncio.adicionar');
 	}
 
+	// Método - Salvar informações do novo anúncio no banco
 	public function adiciona() {
 
 		$categoria = Request::input('categoria');
@@ -45,6 +61,7 @@ class AnuncioController extends Controller {
 		
 	}
 
+	// Método - Exibir view editar anúncio pelo $id
 	public function editar($id) {
 		//$id = 1;
 		//$id = Request::route('id');
