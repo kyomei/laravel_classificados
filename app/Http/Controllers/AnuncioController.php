@@ -61,4 +61,11 @@ class AnuncioController extends Controller {
 
 	}
 
+	public function listaJson() {
+		$anuncios = DB::select('select * from anuncios');
+		//return $anuncios;
+		
+		return response()->json($anuncios);
+	}
+
 }
