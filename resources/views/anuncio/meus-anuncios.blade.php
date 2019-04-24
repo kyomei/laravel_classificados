@@ -1,6 +1,19 @@
 @extends('layout.template')
 
 @section('conteudo')
+
+
+  <!-- Start .\ alert do anúncio excluído ou adicionado com sucesso -->
+  @if(Session::has('status'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      {!! Session::get('status') !!}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  @endif
+  <!-- End .\ alert do anúncio excluído ou adicionado com sucesso -->  
+
   <h1>Meus Anúncios</h1> 
 
   <!-- Start .\ button add anúncio -->  
@@ -56,13 +69,7 @@
    	</table>
     @endif
     
-    <!-- Start .\ alert do anúncio add com sucesso -->
-    @if(old('nome'))
-    <div class="alert alert-success" role="alert">  
-      <strong>Sucesso!</strong> O anúncio {{ old('titulo') }} foi adicionado.
-    </div>
-    @endif
-    <!-- End .\ alert do anúncio add com sucesso -->
 
+    
   </div>   
   @stop

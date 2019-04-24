@@ -9,5 +9,5 @@ class Anuncio extends Model
 	// opcional 
     //protected $table = 'anuncios';
 
-	public $timestamps = false;
+	//public $timestamps = false;
 }

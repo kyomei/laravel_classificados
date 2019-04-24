@@ -52,16 +52,8 @@ class AnuncioController extends Controller {
 		$anuncio->descricao = Request::input('descricao');
 
 		$anuncio->save();
-		//$fotos = Request::input('fotos');
-
-		//DB::insert('INSERT INTO anuncios (id_usuario, id_categoria, titulo, valor, estado, descricao) VALUES (1, ?,?,?,?,?)', array($categoria, $titulo, $valor, $estado, $descricao));
-
-		
-		// Redireciona para url anuncios e manter valor do $titulo na página /anuncios 
-		//return redirect('/anuncios')->withInput(Request::only('titulo'));
-
-		// Redirenciona para um action
-		return redirect()->action('AnuncioController@lista')->withInput(Request::only('titulo'));
+		Request::session()->flash('status', '<strong>Sucesso!</strong> O anúncio '.$anuncio->titulo.' foi adicionado.');
+		return redirect()->action('AnuncioController@lista');
 		
 	}
 
@@ -84,10 +76,16 @@ class AnuncioController extends Controller {
 		return view('anuncio.editar', $data);
 	}
 
-	public function excluir() {
+	// Método - Excluir anuncio do banco de dados pelo $id
+	public function excluir($id) {
 
+		$anuncio = Anuncio::find($id);
+		Request::session()->flash('status', '<strong>Sucesso!</strong> O Anúncio '.$anuncio->titulo.' foi removido.');
+		$anuncio->delete();
+		return redirect()->action('AnuncioController@lista');
 	}
 
+	// Método - Listagem de todos os anúncios em formato json
 	public function listaJson() {
 		$anuncios = Anuncio::all();
 		//return $anuncios;
