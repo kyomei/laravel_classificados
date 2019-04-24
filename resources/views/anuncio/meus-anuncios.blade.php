@@ -28,7 +28,7 @@
           <tr>
             <th class="align-middle">
               @if(!empty($a->url))
-             	  <img src="/images/anuncios/9d005c0336e43ec641bf16f0ffa72a35.jpg" height="50" />
+             	  <img src="/images/anuncios/{{$a->url}}" height="50" />
               @else
                 <img src="/images/anuncios/default.jpg" height="50" />
               @endif
