@@ -29,3 +29,4 @@ Route::post('/anuncios/adiciona', 'AnuncioController@adiciona');
 Route::get('/anuncios/editar/{id}', 'AnuncioController@editar')->where('id', '[0-9]+');
 Route::get('/anuncios/excluir{id}', 'AnuncioController@excluir');
 Route::get('/anuncios/json', 'AnuncioController@listaJson');
+Route::get('/anuncios/lista2', 'AnuncioController@lista2');

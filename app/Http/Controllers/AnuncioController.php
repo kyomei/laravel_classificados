@@ -1,6 +1,7 @@
 <?php namespace classificados\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
+use classificados\Anuncio;
 use Request;
 
 class AnuncioController extends Controller {
@@ -12,6 +13,11 @@ class AnuncioController extends Controller {
 		(SELECT anuncios_imagens.url FROM anuncios_imagens WHERE anuncios_imagens.id_anuncio = anuncios.id LIMIT 1) as url 
 		FROM anuncios 
 		WHERE id_usuario = 1 ORDER BY anuncios.created_at DESC');
+		return view('anuncio.meus-anuncios')->with('anuncios', $data);
+	}
+
+	public function lista2() {
+		$data = Anuncio::all();
 		return view('anuncio.meus-anuncios')->with('anuncios', $data);
 	}
 
@@ -62,7 +68,7 @@ class AnuncioController extends Controller {
 	}
 
 	public function listaJson() {
-		$anuncios = DB::select('select * from anuncios');
+		$anuncios = Anuncio::all();
 		//return $anuncios;
 		
 		return response()->json($anuncios);
