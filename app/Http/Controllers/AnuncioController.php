@@ -43,14 +43,18 @@ class AnuncioController extends Controller {
 	// Método - Salvar informações do novo anúncio no banco
 	public function adiciona() {
 
-		$categoria = Request::input('categoria');
-		$titulo = Request::input('titulo');
-		$valor = Request::input('valor');
-		$estado = Request::input('estado');
-		$descricao = Request::input('descricao');
+		$anuncio = new Anuncio();
+		$anuncio->id_usuario = 1;
+		$anuncio->id_categoria = Request::input('categoria');
+		$anuncio->titulo = Request::input('titulo');
+		$anuncio->valor = Request::input('valor');
+		$anuncio->estado = Request::input('estado');
+		$anuncio->descricao = Request::input('descricao');
+
+		$anuncio->save();
 		//$fotos = Request::input('fotos');
 
-		DB::insert('INSERT INTO anuncios (id_usuario, id_categoria, titulo, valor, estado, descricao) VALUES (1, ?,?,?,?,?)', array($categoria, $titulo, $valor, $estado, $descricao));
+		//DB::insert('INSERT INTO anuncios (id_usuario, id_categoria, titulo, valor, estado, descricao) VALUES (1, ?,?,?,?,?)', array($categoria, $titulo, $valor, $estado, $descricao));
 
 		
 		// Redireciona para url anuncios e manter valor do $titulo na página /anuncios 
