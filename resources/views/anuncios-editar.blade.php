@@ -1,4 +1,4 @@
-@extends('template')
+@extends('layout.template')
 
 @section('conteudo')
   <h1>Editar Anúncio</h1> 

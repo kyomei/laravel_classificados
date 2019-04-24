@@ -7,7 +7,11 @@ class AnuncioController extends Controller {
 
 	public function lista() {
 		$data = DB::select('select * from anuncios');
-		return view('meus-anuncios')->with('anuncios', $data);
+		return view('anuncio.meus-anuncios')->with('anuncios', $data);
+	}
+
+	public function adicionar() {
+		return view('anuncio.adicionar');
 	}
 
 	public function editar($id) {

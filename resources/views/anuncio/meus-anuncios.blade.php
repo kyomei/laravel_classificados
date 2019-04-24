@@ -1,10 +1,10 @@
-@extends('template')
+@extends('layout.template')
 
 @section('conteudo')
   <h1>Meus Anúncios</h1>   
   <div class="clearfix mb-3">
     <div class="float-right">
-      <a href="#" class="btn btn-secondary">Adicionar Anúncio</a>
+      <a href="anuncios/adicionar" class="btn btn-secondary">Adicionar Anúncio</a>
     </div>
   </div>
   @if(empty($anuncios))
