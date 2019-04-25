@@ -66,7 +66,7 @@
             <td class="align-middle">{{ date('d-m-Y', strtotime($a->created_at))}}</td>
             <td class="align-middle">
               <a href="/anuncios/editar/{{$a->id}}" class="btn btn-sm btn-info">Editar</a>
-              <a href="{{action('AnuncioController@excluir', $a->id)}}" class="btn btn-sm btn-danger">Excluir</a>
+              <a href="{{action('AnuncioController@excluir', $a->id)}}" class="btn btn-sm btn-danger" data-confirm>Excluir</a>
             </td>
      	    </tr>
        		@endforeach
