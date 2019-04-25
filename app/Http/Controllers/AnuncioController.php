@@ -73,7 +73,22 @@ class AnuncioController extends Controller {
 		$data['anuncio'] = $anuncio[0];
 		$data['categorias'] = $categorias;
 		$data['fotos'] = $fotos;
-		return view('anuncio.editar', $data);
+		return view('anuncio.editar', $data)->withInput(Request::only('id'));
+	}
+
+	public function edita(Request $request, $id) {
+
+		$anuncio = Anuncio::find($id);
+		$anuncio->id_usuario = 1;
+		$anuncio->id_categoria = Request::input('categoria');
+		$anuncio->titulo = Request::input('titulo');
+		$anuncio->valor = number_format(floatval(Request::input('valor')), 2, '.', ',');
+		$anuncio->estado = Request::input('estado');
+		$anuncio->descricao = Request::input('descricao');
+		$anuncio->save();
+		
+		Request::session()->flash('status', '<strong>Sucesso!</strong> O anúncio '.$anuncio->titulo.' foi alterado.');
+		return redirect()->action('AnuncioController@lista');
 	}
 
 	// Método - Excluir anuncio do banco de dados pelo $id

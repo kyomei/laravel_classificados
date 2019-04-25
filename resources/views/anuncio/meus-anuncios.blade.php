@@ -55,7 +55,13 @@
                 <img src="/images/anuncios/default.jpg" height="50" />
               @endif
             </th>
-            <td class="align-middle"><a href="/anuncio/{{$a->id}}">{{ $a->titulo }}</a> <?= date('Y-m-d', strtotime($a->created_at)) > date('Y-m-d', strtotime('-1 day')) ? '<sup><span class="badge badge-success">Novo</span></sup>':'' ?></td>
+            <td class="align-middle">
+              <a href="/anuncio/{{$a->id}}">{{ $a->titulo }}</a> 
+              {!! date('Y-m-d', strtotime($a->created_at)) > date('Y-m-d', strtotime('-1 day')) ? '<sup><span class="badge badge-success">Novo</span></sup>':'' !!}
+              @if(!empty($a->updated_at))
+                {!! date('Y-m-d', strtotime($a->updated_at)) > date('Y-m-d', strtotime('-1 day')) ? '<sup><span class="badge badge-primary">Atualizado</span></sup>':'' !!}
+              @endif
+            </td>
             <td class="align-middle">R$ {{ number_format($a->valor, 2, ",", ".") }}</td>
             <td class="align-middle">{{ date('d-m-Y', strtotime($a->created_at))}}</td>
             <td class="align-middle">
@@ -67,8 +73,7 @@
           <!-- End .\ Listagem dos anúncios -->
     	  </tbody>
    	</table>
-    @endif
-    
+    @endif   
 
     
   </div>   
