@@ -3,6 +3,17 @@
 @section('conteudo')
 <h1>Adiciona Anúncios</h1>  
 <hr /> 
+<!-- Start .\ - Display errors validação -->
+@if (count($errors) > 0)
+	<div class="alert alert-danger">
+		<ul> 
+		@foreach($errors->all() as $error)
+			<li>{{ $error }}</li>
+		@endforeach
+		</ul>
+	</div>
+@endif
+<!-- End .\ - Display errors validação -->
 
 <div class="row justify-content-md-center">
 	<div class="col-md-8">
@@ -23,13 +34,13 @@
 				<div class="col-md-6">
 					<div class="form-group">
 					    <label for="titulo">Título:</label>
-					    <input type="text" class="form-control" name="titulo" id="titulo">
+					    <input type="text" class="form-control" name="titulo" id="titulo" value="{{ old('titulo') }}">
 					</div>
 				</div>
 				<div class="col-md-2">
 					<div class="form-group">
 					    <label for="valor">Valor:</label>
-					    <input type="text" class="form-control" name="valor" id="valor">
+					    <input type="text" class="form-control" name="valor" id="valor" value="{{ old('valor') }}">
 					</div>
 				</div>
 				<div class="col-md-12">
@@ -45,7 +56,7 @@
 				<div class="col-md-12">
 					<div class="form-group">
 					    <label for="descricao">Descrição:</label>
-					    <textarea class="form-control" name="descricao" rows="5"></textarea>
+					    <textarea class="form-control" name="descricao" rows="5">{{ old('descricao') }}</textarea>
 					</div>
 				</div>
 				<div class="col-md-12">

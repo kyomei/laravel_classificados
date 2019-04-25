@@ -1,6 +1,8 @@
 <?php namespace classificados\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
+//use Illuminate\Support\Facades\Validator;
+use classificados\Http\Requests\AnunciosRequest;
 use classificados\Anuncio;
 use Request;
 
@@ -41,15 +43,25 @@ class AnuncioController extends Controller {
 	}
 
 	// Método - Salvar informações do novo anúncio no banco
-	public function adiciona() {
+	public function adiciona(AnunciosRequest $request) {
+
+		// Validando os dados recebidos
+		
+		// Se apresentar erro na validacao retorna para pagina adicionar
+		/*
+		
+		if($validator->fails()) {
+			return redirect()->action('AnuncioController@adicionar');
+		}
+		*/
 
 		$anuncio = new Anuncio();
 		$anuncio->id_usuario = 1;
-		$anuncio->id_categoria = Request::input('categoria');
-		$anuncio->titulo = Request::input('titulo');
-		$anuncio->valor = Request::input('valor');
-		$anuncio->estado = Request::input('estado');
-		$anuncio->descricao = Request::input('descricao');
+		$anuncio->id_categoria = $request->input('categoria');
+		$anuncio->titulo = $request->input('titulo');
+		$anuncio->valor = $request->input('valor');
+		$anuncio->estado = $request->input('estado');
+		$anuncio->descricao = $request->input('descricao');
 
 		$anuncio->save();
 		Request::session()->flash('status', '<strong>Sucesso!</strong> O anúncio '.$anuncio->titulo.' foi adicionado.');
